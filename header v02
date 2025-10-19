@@ -1,6 +1,6 @@
 <!-- Announcement bar -->
 <div class="announcement">
-     The next evolution of open collaboration in Sweden is here!
+  🚀 The next evolution of open collaboration in Sweden is here!
   <a href="$home/wiki?name=About">Learn More</a>
 </div>
 
@@ -84,12 +84,12 @@ html {
     <div class="features-container">
       <h2 class="section-title">Why OSPO Sweden?</h2>
       <div class="features-grid">
-        <div class="feature-card"><div class="feature-icon"></div><h3>Open Collaboration</h3><p>Build in the open with transparent processes and community-driven development.</p></div>
-        <div class="feature-card"><div class="feature-icon"></div><h3>Digital Sovereignty</h3><p>Control your digital infrastructure with open source solutions that respect your data and privacy.</p></div>
-        <div class="feature-card"><div class="feature-icon"></div><h3>Community Powered</h3><p>Join a network of developers, researchers, and organizations shaping Sweden's open source future.</p></div>
-        <div class="feature-card"><div class="feature-icon"></div><h3>Knowledge Sharing</h3><p>Access resources, documentation, and best practices for open source program management.</p></div>
-        <div class="feature-card"><div class="feature-icon"></div><h3>Innovation Hub</h3><p>Collaborate on cutting-edge projects that push the boundaries of open source technology.</p></div>
-        <div class="feature-card"><div class="feature-icon"></div><h3>Rapid Development</h3><p>Leverage modern tools and workflows to build resilient systems faster than ever.</p></div>
+        <div class="feature-card"><div class="feature-icon">🔓</div><h3>Open Collaboration</h3><p>Build in the open with transparent processes and community-driven development.</p></div>
+        <div class="feature-card"><div class="feature-icon">🛡️</div><h3>Digital Sovereignty</h3><p>Control your digital infrastructure with open source solutions that respect your data and privacy.</p></div>
+        <div class="feature-card"><div class="feature-icon">🤝</div><h3>Community Powered</h3><p>Join a network of developers, researchers, and organizations shaping Sweden's open source future.</p></div>
+        <div class="feature-card"><div class="feature-icon">📚</div><h3>Knowledge Sharing</h3><p>Access resources, documentation, and best practices for open source program management.</p></div>
+        <div class="feature-card"><div class="feature-icon">🚀</div><h3>Innovation Hub</h3><p>Collaborate on cutting-edge projects that push the boundaries of open source technology.</p></div>
+        <div class="feature-card"><div class="feature-icon">⚡</div><h3>Rapid Development</h3><p>Leverage modern tools and workflows to build resilient systems faster than ever.</p></div>
       </div>
     </div>
   </section>
