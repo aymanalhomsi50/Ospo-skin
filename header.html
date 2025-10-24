@@ -1,174 +1,30 @@
-<!-- Announcement bar -->
-<div class="announcement">
-  🚀 The next evolution of open collaboration in Sweden is here!
-  <a href="/wiki?name=About">Learn More</a>
-</div>
-
-<!-- Top navigation header -->
-<header class="main-header">
-  <div class="nav-container">
-    <div class="nav-left">
-      <div class="logo">OSPO <span>SWEDEN</span></div>
-    </div>
-
-    <nav class="nav-center">
-      <a id='hbbtn' href='$home/sitemap'>☰</a>
-      <a href="$home/home">Home</a>
-      <a href="$home/wiki?name=Bylaws">Bylaws</a>
-      <a href="$home/wiki?name=Journal">Journal</a>
-      <a href="$home/wiki?name=Stack">Stack</a>
-      <a href="$home/wiki?name=Minutes">Minutes</a>
-      <a href="$home/timeline?y=ci">Projects</a>
-      <a href="$home/wiki?name=FAQ">FAQ</a>
-      <a href="$home/dir">Files</a>
-      <th1>
-      if {[hascap s] || [hascap a]} {
-        html "<a href='$home/setup'>Admin</a>"
-      }
-      </th1>
-    </nav>
-
-    <div class="nav-right">
-      <th1>
-      if {![info exists login]} {
-        html "<a href='$home/login' class='login-link'>Login</a>"
+<header class="site-header">
+  <!-- <div class="title"><h3>OSPO Sweden<h3></div> -->
+  <div class="status">
+    <th1>
+      if {[info exists login]} {
+        html "<a class='login-link' href='$home/login'><h3>$login</h3></a>"
       } else {
-        html "<a href='$home/logout' class='login-link'>Logout</a>"
+        html "<a class='login-link' href='$home/login'><h3>Login</h3></a>"
       }
-      </th1>
-      <a href="$home/wiki?name=Get+Started" class="get-started-btn">Get Started</a>
-    </div>
+    </th1>
   </div>
 </header>
 
-<nav id="hbdrop" class="hbdrop"></nav>
-
-<!-- HERO SECTION - Only on Home page -->
-<section class="hero" id="hero-section" style="display: none;">
-  <div class="hero-content">
-    <h1>Building a Sovereign<br><span>Open Source Future</span></h1>
-    <p>
-      OSPO Sweden empowers communities, startups and institutions
-      to collaborate on open, resilient and transparent digital systems.
-    </p>
-    <a href="$home/wiki?name=Get+Started" class="hero-btn">Get Started</a>
-  </div>
-</section>
-
-<!-- FEATURES SECTION - Only on Home page -->
-<section class="features" id="features-section" style="display: none;">
-  <div class="features-container">
-    <h2 class="section-title">Why OSPO Sweden?</h2>
-    <div class="features-grid">
-      
-      <div class="feature-card">
-        <div class="feature-icon">🔓</div>
-        <h3>Open Collaboration</h3>
-        <p>Build in the open with transparent processes, shared knowledge, and community-driven development.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🛡️</div>
-        <h3>Digital Sovereignty</h3>
-        <p>Control your digital infrastructure with open source solutions that respect your data and privacy.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🤝</div>
-        <h3>Community Powered</h3>
-        <p>Join a network of developers, researchers, and organizations shaping Sweden's open source future.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">📚</div>
-        <h3>Knowledge Sharing</h3>
-        <p>Access resources, documentation, and best practices for open source program management.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🚀</div>
-        <h3>Innovation Hub</h3>
-        <p>Collaborate on cutting-edge projects that push the boundaries of open source technology.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>Rapid Development</h3>
-        <p>Leverage modern tools and workflows to build resilient systems faster than ever.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- STATS SECTION - Only on Home page -->
-<section class="stats" id="stats-section" style="display: none;">
-  <div class="stats-container">
-    <div class="stat-item">
-      <div class="stat-number">50+</div>
-      <div class="stat-label">Active Projects</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">200+</div>
-      <div class="stat-label">Contributors</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">15+</div>
-      <div class="stat-label">Organizations</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">100%</div>
-      <div class="stat-label">Open Source</div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA SECTION - Only on Home page -->
-<section class="cta-section" id="cta-section" style="display: none;">
-  <div class="cta-container">
-    <h2>Ready to Join the Movement?</h2>
-    <p>
-      Whether you're a developer, organization, or simply passionate about open source,
-      there's a place for you in OSPO Sweden. Let's build the future together.
-    </p>
-    <div class="cta-buttons">
-      <a href="$home/wiki?name=Get+Started" class="cta-btn-primary">Get Started</a>
-      <a href="$home/wiki?name=About" class="cta-btn-secondary">Learn More</a>
-    </div>
-  </div>
-</section>
-
-<script nonce="$nonce">
-(function() {
-  // Home page detection
-  var path = window.location.pathname;
-  var search = window.location.search;
-  var isHome = (path === '/home' || path === '/' || path === '/index' || path.endsWith('/home')) && search === '';
-  
-  var homeOnlySections = ['hero-section', 'features-section', 'stats-section', 'cta-section'];
-  homeOnlySections.forEach(function(sectionId) {
-    var section = document.getElementById(sectionId);
-    if (section) {
-      section.style.display = isHome ? 'block' : 'none';
-    }
-  });
-
-  // Hamburger menu toggle
-  var hbBtn = document.getElementById('hbbtn');
-  var hbDrop = document.getElementById('hbdrop');
-  
-  if (hbBtn && hbDrop) {
-    hbBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      hbDrop.classList.toggle('active');
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!hbBtn.contains(e.target) && !hbDrop.contains(e.target)) {
-        hbDrop.classList.remove('active');
+<nav class="mainmenu" title="Main Menu">
+  <th1>
+    html "<a id='hbbtn' href='$home/sitemap' aria-label='Site Map'>&#9776;</a>"
+    builtin_request_js hbmenu.js
+    foreach {name url expr class} $mainmenu {
+      if {![capexpr $expr]} continue
+      if {[string match /* $url]} {
+        if {[string match $url\[/?#\]* /$current_page/]} {
+          set class "active $class"
+        }
+        set url $home$url
       }
-    });
-  }
-})();
-</script>
+      html "<a href='$url' class='$class'>$name</a>\n"
+    }
+  </th1>
+</nav>
+<nav id="hbdrop" class='hbdrop' title="sitemap"></nav>
