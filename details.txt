@@ -1,8 +1,8 @@
+pikchr-background: ""
+pikchr-fontscale: ""
+pikchr-foreground: ""
+pikchr-scale: ""
 timeline-arrowheads: 1
 timeline-circle-nodes: 1
 timeline-color-graph-lines: 1
-white-foreground: 0
-# Disable default Fossil header/footer
-header-line: 0
-footer-line: 0
-mainmenu: 0
+white-foreground: 1
