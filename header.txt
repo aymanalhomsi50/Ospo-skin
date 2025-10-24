@@ -12,24 +12,36 @@
     </div>
 
     <nav class="nav-center">
-      <a href="/home">Home</a>
-      <a href="/wiki?name=Bylaws">Bylaws</a>
-      <a href="/wiki?name=Journal">Journal</a>
-      <a href="/wiki?name=Stack">Stack</a>
-      <a href="/wiki?name=Minutes">Minutes</a>
-      <a href="/timeline?y=ci">Projects</a>
-      <a href="/wiki?name=FAQ">FAQ</a>
-      <a href="/dir">Files</a>
-      <a href="/setup">Admin</a>
+      <a id='hbbtn' href='$home/sitemap'>☰</a>
+      <a href="$home/home">Home</a>
+      <a href="$home/wiki?name=Bylaws">Bylaws</a>
+      <a href="$home/wiki?name=Journal">Journal</a>
+      <a href="$home/wiki?name=Stack">Stack</a>
+      <a href="$home/wiki?name=Minutes">Minutes</a>
+      <a href="$home/timeline?y=ci">Projects</a>
+      <a href="$home/wiki?name=FAQ">FAQ</a>
+      <a href="$home/dir">Files</a>
+      <th1>
+      if {[hascap s] || [hascap a]} {
+        html "<a href='$home/setup'>Admin</a>"
+      }
+      </th1>
     </nav>
 
     <div class="nav-right">
-      <a href="/login" class="login-link">Login</a>
-      <a href="/wiki?name=Get+Started" class="get-started-btn">Get Started</a>
+      <th1>
+      if {![info exists login]} {
+        html "<a href='$home/login' class='login-link'>Login</a>"
+      } else {
+        html "<a href='$home/logout' class='login-link'>Logout</a>"
+      }
+      </th1>
+      <a href="$home/wiki?name=Get+Started" class="get-started-btn">Get Started</a>
     </div>
   </div>
 </header>
 
+<nav id="hbdrop" class="hbdrop"></nav>
 
 <!-- HERO SECTION - Only on Home page -->
 <section class="hero" id="hero-section" style="display: none;">
@@ -39,7 +51,7 @@
       OSPO Sweden empowers communities, startups and institutions
       to collaborate on open, resilient and transparent digital systems.
     </p>
-    <a href="/wiki?name=Get+Started" class="hero-btn">Get Started</a>
+    <a href="$home/wiki?name=Get+Started" class="hero-btn">Get Started</a>
   </div>
 </section>
 
@@ -120,28 +132,43 @@
       there's a place for you in OSPO Sweden. Let's build the future together.
     </p>
     <div class="cta-buttons">
-      <a href="/wiki?name=Get+Started" class="cta-btn-primary">Get Started</a>
-      <a href="/wiki?name=About" class="cta-btn-secondary">Learn More</a>
+      <a href="$home/wiki?name=Get+Started" class="cta-btn-primary">Get Started</a>
+      <a href="$home/wiki?name=About" class="cta-btn-secondary">Learn More</a>
     </div>
   </div>
 </section>
 
-<script>
+<script nonce="$nonce">
 (function() {
+  // Home page detection
   var path = window.location.pathname;
   var search = window.location.search;
-  
-  // Check if this is home page
   var isHome = (path === '/home' || path === '/' || path === '/index' || path.endsWith('/home')) && search === '';
   
-  // Show/hide home-only sections
   var homeOnlySections = ['hero-section', 'features-section', 'stats-section', 'cta-section'];
-  
   homeOnlySections.forEach(function(sectionId) {
     var section = document.getElementById(sectionId);
     if (section) {
       section.style.display = isHome ? 'block' : 'none';
     }
   });
+
+  // Hamburger menu toggle
+  var hbBtn = document.getElementById('hbbtn');
+  var hbDrop = document.getElementById('hbdrop');
+  
+  if (hbBtn && hbDrop) {
+    hbBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      hbDrop.classList.toggle('active');
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!hbBtn.contains(e.target) && !hbDrop.contains(e.target)) {
+        hbDrop.classList.remove('active');
+      }
+    });
+  }
 })();
 </script>
