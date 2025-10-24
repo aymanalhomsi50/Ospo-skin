@@ -1,8 +1,0 @@
-pikchr-background: ""
-pikchr-fontscale: ""
-pikchr-foreground: ""
-pikchr-scale: ""
-timeline-arrowheads: 1
-timeline-circle-nodes: 1
-timeline-color-graph-lines: 1
-white-foreground: 1
