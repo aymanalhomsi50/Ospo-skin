@@ -1,0 +1,121 @@
+<!-- Announcement bar -->
+<div class="announcement">
+  🚀 The next evolution of open collaboration in Sweden is here!
+  <a href="$home/wiki?name=About">Learn More</a>
+</div>
+
+<!-- Top navigation header -->
+<header class="main-header" role="banner">
+  <div class="nav-container">
+
+    <!-- Left: Brand -->
+    <div class="nav-left">
+      <a href="$home" class="logo" aria-label="Go to $project_name homepage">
+        OSPO <span>SWEDEN</span>
+      </a>
+    </div>
+
+    <!-- Center: Main Menu (Fossil built) -->
+    <nav class="nav-center" role="navigation" aria-label="Main menu" id="mainmenu">
+      <th1>
+        builtin_request_js hbmenu.js
+        foreach {name url expr class} $mainmenu {
+          if {![capexpr $expr]} continue
+          if {[string match /* $url]} {
+            if {[string match $url\[/?#\]* /$current_page/]} {
+              set class "active $class"
+            }
+            set url $home$url
+          }
+          html "<a href='$url' class='$class'>$name</a>\n"
+        }
+      </th1>
+    </nav>
+
+    <!-- Right: Actions -->
+    <div class="nav-right">
+      <th1>
+        if {[info exists login] && $login ne ""} {
+          html "<a href='$home/logout' class='logout-link'>Logout</a>\n"
+          if {[hascap s]} {
+            html "<a href='$home/setup' class='admin-link'>Admin</a>\n"
+          }
+        } else {
+          html "<a href='$home/login' class='login-link'>Login</a>\n"
+        }
+      </th1>
+      <a href="$home/wiki?name=Get+Started" class="get-started-btn">Get Started</a>
+    </div>
+
+  </div>
+</header>
+
+<!-- HOMEPAGE SECTIONS -->
+<th1>
+# --- Detect homepage safely ---
+set pg ""
+if {[info exists current_page]} { set pg $current_page }
+
+set is_home 0
+if {[regexp -nocase {wiki(\?.*name=OSPO(\+|%20)Sweden)} $pg]} {
+  set is_home 1
+} elseif {$pg eq "index" || $pg eq "" || $pg eq "home" || $pg eq "Home"} {
+  set is_home 1
+}
+
+# --- Debug info (to confirm in page source) ---
+html "<!-- DEBUG current_page=$pg is_home=$is_home -->"
+
+# --- Render homepage if detected ---
+if {$is_home} {
+html {
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Building a Sovereign<br><span>Open Source Future</span></h1>
+      <p>
+        OSPO Sweden empowers communities, startups and institutions
+        to collaborate on open, resilient and transparent digital systems.
+      </p>
+      <a href="$home/wiki?name=Get+Started" class="hero-btn">Get Started</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="features-container">
+      <h2 class="section-title">Why OSPO Sweden?</h2>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon">🔓</div><h3>Open Collaboration</h3><p>Build in the open with transparent processes and community-driven development.</p></div>
+        <div class="feature-card"><div class="feature-icon">🛡️</div><h3>Digital Sovereignty</h3><p>Control your digital infrastructure with open source solutions that respect your data and privacy.</p></div>
+        <div class="feature-card"><div class="feature-icon">🤝</div><h3>Community Powered</h3><p>Join a network of developers, researchers, and organizations shaping Sweden's open source future.</p></div>
+        <div class="feature-card"><div class="feature-icon">📚</div><h3>Knowledge Sharing</h3><p>Access resources, documentation, and best practices for open source program management.</p></div>
+        <div class="feature-card"><div class="feature-icon">🚀</div><h3>Innovation Hub</h3><p>Collaborate on cutting-edge projects that push the boundaries of open source technology.</p></div>
+        <div class="feature-card"><div class="feature-icon">⚡</div><h3>Rapid Development</h3><p>Leverage modern tools and workflows to build resilient systems faster than ever.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stats-container">
+      <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Active Projects</div></div>
+      <div class="stat-item"><div class="stat-number">200+</div><div class="stat-label">Contributors</div></div>
+      <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">Organizations</div></div>
+      <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Open Source</div></div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2>Ready to Join the Movement?</h2>
+      <p>
+        Whether you're a developer, organization, or simply passionate about open source,
+        there's a place for you in OSPO Sweden. Let's build the future together.
+      </p>
+      <div class="cta-buttons">
+        <a href="$home/wiki?name=Get+Started" class="cta-btn-primary">Get Started</a>
+        <a href="$home/wiki?name=About" class="cta-btn-secondary">Learn More</a>
+      </div>
+    </div>
+  </section>
+}
+}
+</th1>
